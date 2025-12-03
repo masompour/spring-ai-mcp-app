@@ -1,0 +1,22 @@
+#spring.ai.mcp.client.sse.connections:
+#  person-mcp-server:
+#    url: http://localhost:8060
+#  account-mcp-server:
+#    url: http://localhost:8040
+#
+spring:
+  application:
+    name:  account-mcp-server
+  ai:
+    ollama:
+      base-url: ${SPRING_AI_OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        model: llama3.1 #llama3.2:1b # deepseek-r1:1.5b, gemma3:1b
+    mcp:
+      client:
+        sse:
+          connections:
+            person-mcp-server:
+                url: http://localhost:8060
+            account-mcp-server:
+                url: http://localhost:8040

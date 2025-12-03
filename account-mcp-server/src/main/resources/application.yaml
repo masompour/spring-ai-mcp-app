@@ -1,0 +1,38 @@
+server.port: 8040
+spring:
+  application:
+    name:  account-mcp-server
+  ai:
+    mcp:
+      server:
+        name: account-mcp-server
+        version: 1.0.0
+#    chat:
+#      memory:
+#        repository:
+#          jdbc:
+            # https://docs.spring.io/spring-ai/reference/1.0/api/chat-memory.html#_schema_initialization
+#            initialize-schema: always
+#            schema: classpath:sql/schema-h2.sql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/function_calling
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    hikari:
+      pool-name: DemoChatbotHikariPool
+      maximum-pool-size: 20         # Max concurrent connections
+      minimum-idle: 5               # Minimum idle connections
+      idle-timeout: 30000           # 30 seconds
+      max-lifetime: 1800000         # 30 minutes
+      connection-timeout: 20000     # 20 seconds
+      auto-commit: true
+      validation-timeout: 5000
+      leak-detection-threshold: 900000  # Warn if connection held > 15s
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
